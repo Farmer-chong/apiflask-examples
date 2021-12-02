@@ -32,7 +32,7 @@ def index():
     try:
         # 注释掉下面一行，测试abort返回错误
         # raise Exception
-        return make_resp(mock_data, status_code=400)
+        return make_resp(mock_data, status_code=201)
     except Exception:
         """通过abort，返回错误"""
         abort(500, message="nothing", extra_data=make_resp(None))

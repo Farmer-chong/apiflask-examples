@@ -6,10 +6,11 @@
     :date: 2021/08/04 16:22:45
 '''
 
+from flask import request
 from apiflask import APIFlask, input, output, abort
 from apiflask.decorators import doc
-from marshmallow.fields import Field, Raw
-from schema import UserInSchema, UserOutSchema
+from marshmallow.fields import Raw
+from schema import UserInSchema, UserOutSchema, IconInSchema
 
 
 app = APIFlask(__name__)
@@ -49,8 +50,16 @@ def login(data):
     abort(404, "用户未注册")
 
 # @app.post("/icon")
-# # @input(location="files")
+# @input(IconInSchema, location="files")
 # @doc(description="上传头像")
 # def icon(data):
 #     print(data)
-#     return data
+#     print(request.files.get("icon"))
+#     return {"ok": 'ok'}
+
+@app.post("/icon")
+@input({"icon": Raw(type="file", required=True)}, location="files")
+@doc(description="上传头像")
+def icon(data):
+    print(data.get("icon"))
+    return {"ok": 'ok'}

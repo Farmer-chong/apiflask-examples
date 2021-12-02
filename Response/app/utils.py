@@ -10,12 +10,16 @@ from typing import Union
 from flask import make_response
 
 
-def make_resp(payload: any, status_code: int = 200, message: str = "ok") -> Union[dict, int]:
+def make_resp(payload: any,
+              status_code: int = 200,
+              http_status_code: int = 200,
+              message: str = "ok") -> Union[dict, int]:
     """格式化响应
 
     Args:
         payload (any): 状态码
         status_code (int, optional): 消息内容. Defaults to 200.
+        http_status_code (int, optional): http状态码. Defaults to 200.
         message (str, optional): 响应主体. Defaults to "ok".
 
     Returns:
@@ -26,7 +30,7 @@ def make_resp(payload: any, status_code: int = 200, message: str = "ok") -> Unio
         'status_code': status_code,
         'message': message,
         'data': payload
-    }, status_code
+    }, http_status_code
 
 
 class Result():

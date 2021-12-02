@@ -7,7 +7,7 @@
 '''
 
 from apiflask import Schema 
-from marshmallow.fields import Email, String, Integer
+from marshmallow.fields import Email, String, Integer, Raw
 
 
 class UserInSchema(Schema):
@@ -36,3 +36,5 @@ class UserOutSchema(Schema):
     username = String(required=True)
     url = String()
 
+class IconInSchema(Schema):
+    icon = Raw(type="file")
