@@ -17,10 +17,10 @@ def make_resp(payload: any,
     """格式化响应
 
     Args:
-        payload (any): 状态码
-        status_code (int, optional): 消息内容. Defaults to 200.
+        payload (any): 响应主体
+        status_code (int, optional): 消息状态码. Defaults to 200.
         http_status_code (int, optional): http状态码. Defaults to 200.
-        message (str, optional): 响应主体. Defaults to "ok".
+        message (str, optional): 消息内容. Defaults to "ok".
 
     Returns:
         Union[dict, int]: 格式化后的响应体、http状态码
